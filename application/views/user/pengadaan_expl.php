@@ -20,7 +20,7 @@
         </div>
       </form>
 
-      <table class="table align-items-center table-flush table-bordered table-responsive">
+      <table class="table align-items-center table-flush table-bordered">
         <thead class="thead-dark">
           <tr>
             <th>#</th>
