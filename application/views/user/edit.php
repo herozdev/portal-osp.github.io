@@ -18,14 +18,14 @@
       <div class="form-group row">
         <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="firstname" id="firstname" value="<?= $user['firstname']; ?>" >
+          <input type="text" class="form-control" name="firstname" id="firstname" value="<?= $user['firstname']; ?>">
           <?= form_error('firstname', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
       </div>
       <div class="form-group row">
         <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="lastname" id="lastname" value="<?= $user['lastname']; ?>" >
+          <input type="text" class="form-control" name="lastname" id="lastname" value="<?= $user['lastname']; ?>">
           <?= form_error('lastname', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
       </div>
@@ -34,7 +34,7 @@
         <div class="col-sm-10">
           <div class="row">
             <div class="col-sm-3">
-              <img src="<?= base_url('assets/img/profile/') . $user['image'] ; ?>" class="img-thumbnail">
+              <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-thumbnail">
             </div>
             <div class="col-sm-9">
               <div class="custom-file">
@@ -48,6 +48,7 @@
       <div class="form-group row justify-content-end">
         <div class="col-sm-10">
           <button type="submit" class="btn btn-primary">Update Data</button>
+          <button type="reset" class="btb btn-primary">Reset Data</button>
         </div>
       </div>
 
@@ -62,5 +63,3 @@
 
 </div>
 <!-- End of Main Content -->
-
-
