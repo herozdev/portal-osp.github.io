@@ -1461,29 +1461,49 @@ class User extends CI_Controller
 
 	public function upload_pdf($id = "")
 	{
+		$data['title'] = "Upload File PDF";
+
 		$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
 
-		$config['allowed_types'] = 'pdf';
-		$config['max_size'] = '5120';
-		$config['upload_path'] = './assets/files/documents/';
+		$this->form_validation->set_rules('id', 'ID', 'required');
 
-		$this->load->library('upload', $config);
 
-		if ($this->upload->do_upload('files')) {
-
-			$old_image = $data['pengadaan']['files'];
-			if ($old_image != 'default.pdf') {
-				unlink(FCPATH . 'assets/files/documents/' . $old_image);
-			}
-
-			$newimg = $this->upload->data('file_name');
-
-			$this->db->set('files', $newimg);
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/topbar', $data);
+			$this->load->view('user/upload', $data);
+			$this->load->view('templates/footer');
 		} else {
-			echo $this->upload->display_errors();
+			$upload = $_FILES['files']['name'];
+
+			if ($upload) {
+				$config['allowed_types'] = 'pdf';
+				$config['max_size'] = '5120';
+				$config['upload_path'] = './assets/files/documents/';
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('files')) {
+
+					$old_image = $data['pengadaan']['files'];
+					if ($old_image != 'default.pdf') {
+						unlink(FCPATH . 'assets/files/documents/' . $old_image);
+					}
+
+					$newimg = $this->upload->data('file_name');
+
+					$this->db->set('files', $newimg);
+				} else {
+					echo $this->upload->display_errors();
+				}
+			}
+			$this->db->where('id', $id);
+			$this->db->update('pengadaan');
+
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Upload data success!</div>');
+			redirect('pengadaan', 'refresh');
 		}
-		$this->db->where('id', $id);
-		$this->db->update('pengadaan');
 	}
 }
 
