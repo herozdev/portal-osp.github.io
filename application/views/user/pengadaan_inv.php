@@ -55,7 +55,7 @@
 							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= date('d M Y', strtotime($inv['tgl_ip'])); ?></td>
 							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= $inv['jenis_investasi']; ?></td>
 							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= $inv['kegiatan']; ?></td>
-							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= $inv['rincian']; ?></td>
+							<td style="text-align: center; vertical-align:middle; font-size:small; white-space: pre-line;"><?= $inv['rincian']; ?></td>
 							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= number_format($inv['nilai_ip']); ?></td>
 							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= number_format($inv['year_now']); ?></td>
 							<td style="text-align: center; vertical-align:middle; font-size:small;"><?= $inv['firstname']; ?></td>
@@ -218,7 +218,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<textarea name="rincian" id="rincian" cols="10" rows="5" class="form-control" placeholder="Rincian"></textarea>
+						<textarea name="rincian" id="rincian" cols="10" rows="5" class="form-control" placeholder="Rincian" wrap="hard"></textarea>
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">

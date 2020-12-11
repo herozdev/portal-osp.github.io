@@ -902,7 +902,7 @@ class User extends CI_Controller
 			$spk_now_fix = str_replace('.', '', $spk_now);
 
 			$data['pengadaan_expl'] = $this->db->get_where('pengadaan_expl', ['id' =>
-				$id])->row_array();
+			$id])->row_array();
 
 			$config['allowed_types'] = 'pdf';
 			$config['max_size'] = '5120';
@@ -1051,7 +1051,7 @@ class User extends CI_Controller
 			$nilai_memo_spk_fix = str_replace('.', '', $nilai_memo_spk);
 
 			$data['peng_expl_nonit'] = $this->db->get_where('peng_expl_non_it', ['id' =>
-				$id])->row_array();
+			$id])->row_array();
 
 			$config['allowed_types'] = 'pdf';
 			$config['max_size'] = '5120';
@@ -1220,7 +1220,7 @@ class User extends CI_Controller
 		$data['title'] = "Edit Profile";
 
 		$data['user'] = $this->db->get_where('user', ['user_pn' =>
-			$this->session->userdata('user_pn')])->row_array();
+		$this->session->userdata('user_pn')])->row_array();
 
 		$this->form_validation->set_rules('firstname', 'First Name', 'trim|required');
 		$this->form_validation->set_rules('lastname', 'Last Name', 'trim|required');
@@ -1274,7 +1274,7 @@ class User extends CI_Controller
 		$data['title'] = "Change Password";
 
 		$data['user'] = $this->db->get_where('user', ['user_pn' =>
-			$this->session->userdata('user_pn')])->row_array();
+		$this->session->userdata('user_pn')])->row_array();
 
 		$this->form_validation->set_rules('current_password', 'Current Password', 'trim|required');
 		$this->form_validation->set_rules('new_password1', 'New Password', 'trim|required|min_length[5]|matches[new_password2]');
