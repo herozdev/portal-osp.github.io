@@ -725,7 +725,7 @@ class User extends CI_Controller
 			$nilai_spk_fix = str_replace('.', '', $nilai_spk);
 			$spk_now_fix = str_replace('.', '', $spk_now);
 
-			$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
+			/*$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
 
 			$config['allowed_types'] = 'pdf';
 			$config['max_size'] = '5120';
@@ -747,7 +747,7 @@ class User extends CI_Controller
 				echo $this->upload->display_errors();
 			}
 			$this->db->where('id', $id);
-			$this->db->update('pengadaan');
+			$this->db->update('pengadaan');*/
 
 			$post = array(
 				'pemutus' => $pemutus,

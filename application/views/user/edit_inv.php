@@ -172,7 +172,7 @@
           <div id="divFiat"></div>
         </div>
       </div>
-      <div class="form-group">
+      <!--<div class="form-group">
         <div class="row">
           <div class="col-sm-3">
             <div class="custom-file">
@@ -184,7 +184,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="form-group">
         <button type="reset" class="btn btn-outline-secondary">Cancel</button>
         <button type="submit" class="btn btn-outline-primary">Update</button>
