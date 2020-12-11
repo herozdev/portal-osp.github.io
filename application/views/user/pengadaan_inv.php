@@ -64,8 +64,9 @@
 								<a href="" onclick="confirm_modal('<?= site_url('user/delete_inv/' . $inv['id']); ?>')" data-toggle="modal" data-target="#deleteMenu" class="badge badge-danger"><i class="fas fa-trash-alt"></i> Delete</a>
 								<a href="<?= site_url('user/view_inv/' . $inv['id']); ?>" class="badge badge-primary"><i class="fas fa-info-circle"></i> Detail</a>
 								<a href="<?= base_url() . 'assets/files/documents/' . $inv['files']; ?>" target="_blank" class="badge badge-info">
-									<i class="fas fa-file-pdf"></i> PDF
+									<i class="fas fa-file-pdf"></i> View PDF
 								</a>
+								<a href="<?= site_url('user/upload_pdf/' . $inv['id']); ?>" class="badge badge-success"><i class="fas fa-arrow-up"></i> Upload PDF</a>
 							</td>
 						</tr>
 						<tr class="p">

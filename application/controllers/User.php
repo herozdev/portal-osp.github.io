@@ -1458,6 +1458,33 @@ class User extends CI_Controller
 
 		$this->load->view('user/excel_monitoring_expl', $data);
 	}
+
+	public function upload_pdf($id = "")
+	{
+		$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
+
+		$config['allowed_types'] = 'pdf';
+		$config['max_size'] = '5120';
+		$config['upload_path'] = './assets/files/documents/';
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('files')) {
+
+			$old_image = $data['pengadaan']['files'];
+			if ($old_image != 'default.pdf') {
+				unlink(FCPATH . 'assets/files/documents/' . $old_image);
+			}
+
+			$newimg = $this->upload->data('file_name');
+
+			$this->db->set('files', $newimg);
+		} else {
+			echo $this->upload->display_errors();
+		}
+		$this->db->where('id', $id);
+		$this->db->update('pengadaan');
+	}
 }
 
 /* End of file User.php */
