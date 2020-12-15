@@ -1465,6 +1465,8 @@ class User extends CI_Controller
 
 		$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
 
+		$data['user'] = $this->db->get_where('user', ['user_pn' => $this->session->userdata('user_pn')])->row_array();
+
 		$this->form_validation->set_rules('id', 'ID', 'required');
 
 
