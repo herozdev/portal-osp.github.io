@@ -1,13 +1,25 @@
 <div class="container">
-  <button class="btn btn-primary" ng-click="vm.addDoc()">Add</button>
-  <div class="panel-group" data-as-sortable="vm.documentDragListeners" ng-model="vm.documents">
-    <div class="panel panel-default xlist" ng-repeat="doc in vm.documents" data-as-sortable-item>
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <i class="fa fa-grip-large fa-rotate-90" data-as-sortable-item-handle></i>
-          <a href="" data-toggle="collapse" data-target="#collapse{{$index}}"></a>
-        </h4>
-      </div>
-    </div>
-  </div>
+  <form action="<?= base_url('user/upload_pdf') ?>" method="post" enctype="multipart/form-data">
+    <input type="file" name="files[]" multiple>
+    <input type="submit" value="Upload">
+  </form>
+  <?php
+  /*if (isset($_FILES['files'])) {
+    $myFile = $_FILES['files'];
+    $fileCount = count($myFile["name"]);
+
+    for ($i = 0; $i < $fileCount; $i++) {
+  ?>
+      <p>File #<?= $i + 1 ?>:</p>
+      <p>
+        Name: <?= $myFile["name"][$i] ?><br>
+        Temporary file: <?= $myFile["tmp_name"][$i] ?><br>
+        Type: <?= $myFile["type"][$i] ?><br>
+        Size: <?= $myFile["size"][$i] ?><br>
+        Error: <?= $myFile["error"][$i] ?><br>
+      </p>
+  <?php
+    }
+  }*/
+  ?>
 </div>

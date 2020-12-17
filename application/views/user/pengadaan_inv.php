@@ -66,7 +66,7 @@
 								<a href="<?= base_url() . 'assets/files/documents/' . $inv['files']; ?>" target="_blank" class="badge badge-info">
 									<i class="fas fa-file-pdf"></i> View PDF
 								</a>
-								<a href="<?= site_url('user/upload_pdf/' . $inv['id']); ?>" class="badge badge-success"><i class="fas fa-arrow-up"></i> Upload PDF</a>
+								<!--<a href="<?= site_url('user/upload_pdf/' . $inv['id']); ?>" class="badge badge-success"><i class="fas fa-arrow-up"></i> Upload PDF</a>-->
 							</td>
 						</tr>
 						<tr class="p">

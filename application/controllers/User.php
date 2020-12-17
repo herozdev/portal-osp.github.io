@@ -725,30 +725,6 @@ class User extends CI_Controller
 			$nilai_spk_fix = str_replace('.', '', $nilai_spk);
 			$spk_now_fix = str_replace('.', '', $spk_now);
 
-			/*$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
-
-			$config['allowed_types'] = 'pdf';
-			$config['max_size'] = '5120';
-			$config['upload_path'] = './assets/files/documents/';
-
-			$this->load->library('upload', $config);
-
-			if ($this->upload->do_upload('files')) {
-
-				$old_image = $data['pengadaan']['files'];
-				if ($old_image != 'default.pdf') {
-					unlink(FCPATH . 'assets/files/documents/' . $old_image);
-				}
-
-				$newimg = $this->upload->data('file_name');
-
-				$this->db->set('files', $newimg);
-			} else {
-				echo $this->upload->display_errors();
-			}
-			$this->db->where('id', $id);
-			$this->db->update('pengadaan');*/
-
 			$post = array(
 				'pemutus' => $pemutus,
 				'uker' => $uker,
@@ -800,6 +776,35 @@ class User extends CI_Controller
 
 					redirect('user/pengadaan_inv', 'refresh');
 				} else {
+
+					$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
+
+					$upload = $_FILES['files']['name'];
+
+					if ($upload) {
+						$config['allowed_types'] = 'pdf';
+						$config['max_size'] = '5120';
+						$config['upload_path'] = './assets/files/documents/';
+
+						$this->load->library('upload', $config);
+
+						if ($this->upload->do_upload('files')) {
+
+							$old_image = $data['pengadaan']['files'];
+							if ($old_image != 'default.pdf') {
+								unlink(FCPATH . 'assets/files/documents/' . $old_image);
+							}
+
+							$newimg = $this->upload->data('file_name');
+
+							$this->db->set('files', $newimg);
+						} else {
+							echo $this->upload->display_errors();
+						}
+						$this->db->where('id', $id);
+						$this->db->update('pengadaan');
+					}
+
 					foreach ($tahun as $key => $tahun) {
 						$data_tahun_anggaran = array(
 							'id' => uniqid(),
@@ -866,7 +871,6 @@ class User extends CI_Controller
 					}
 				}
 				//print_r($total);
-
 			}
 		}
 	}
@@ -900,31 +904,6 @@ class User extends CI_Controller
 			$year_now_fix = str_replace('.', '', $year_now);
 			$nilai_spk_fix = str_replace('.', '', $nilai_spk);
 			$spk_now_fix = str_replace('.', '', $spk_now);
-
-			$data['pengadaan_expl'] = $this->db->get_where('pengadaan_expl', ['id' =>
-			$id])->row_array();
-
-			$config['allowed_types'] = 'pdf';
-			$config['max_size'] = '5120';
-			$config['upload_path'] = './assets/files/documents/';
-
-			$this->load->library('upload', $config);
-
-			if ($this->upload->do_upload('files')) {
-
-				$old_image = $data['pengadaan_expl']['files'];
-				if ($old_image != 'default.pdf') {
-					unlink(FCPATH . 'assets/files/documents/' . $old_image);
-				}
-
-				$newimg = $this->upload->data('file_name');
-
-				$this->db->set('files', $newimg);
-			} else {
-				echo $this->upload->display_errors();
-			}
-			$this->db->where('id', $id);
-			$this->db->update('pengadaan_expl');
 
 			$post = array(
 				'pemutus' => $pemutus,
@@ -973,6 +952,35 @@ class User extends CI_Controller
 
 					redirect('user/pengadaan_expl', 'refresh');
 				} else {
+
+					$data['pengadaan_expl'] = $this->db->get_where('pengadaan_expl', ['id' => $id])->row_array();
+
+					$upload = $_FILES['files']['name'];
+
+					if ($upload) {
+						$config['allowed_types'] = 'pdf';
+						$config['max_size'] = '5120';
+						$config['upload_path'] = './assets/files/documents/';
+
+						$this->load->library('upload', $config);
+
+						if ($this->upload->do_upload('files')) {
+
+							$old_image = $data['pengadaan_expl']['files'];
+							if ($old_image != 'default.pdf') {
+								unlink(FCPATH . 'assets/files/documents/' . $old_image);
+							}
+
+							$newimg = $this->upload->data('file_name');
+
+							$this->db->set('files', $newimg);
+						} else {
+							echo $this->upload->display_errors();
+						}
+						$this->db->where('id', $id);
+						$this->db->update('pengadaan_expl');
+					}
+
 					foreach ($no_fiat as $key => $no_fiat) {
 						$data_fiat = array(
 							'id' => uniqid(),
@@ -1050,31 +1058,6 @@ class User extends CI_Controller
 			$spk_now_fix = str_replace('.', '', $spk_now);
 			$nilai_memo_spk_fix = str_replace('.', '', $nilai_memo_spk);
 
-			$data['peng_expl_nonit'] = $this->db->get_where('peng_expl_non_it', ['id' =>
-			$id])->row_array();
-
-			$config['allowed_types'] = 'pdf';
-			$config['max_size'] = '5120';
-			$config['upload_path'] = './assets/files/documents/';
-
-			$this->load->library('upload', $config);
-
-			if ($this->upload->do_upload('files')) {
-
-				$old_image = $data['peng_expl_nonit']['files'];
-				if ($old_image != 'default.pdf') {
-					unlink(FCPATH . 'assets/files/documents/' . $old_image);
-				}
-
-				$newimg = $this->upload->data('file_name');
-
-				$this->db->set('files', $newimg);
-			} else {
-				echo $this->upload->display_errors();
-			}
-			$this->db->where('id', $id);
-			$this->db->update('peng_expl_non_it');
-
 			$post = array(
 				'no_ip' => $no_ip,
 				'tgl_ip' => $tgl_ip,
@@ -1123,6 +1106,35 @@ class User extends CI_Controller
 
 					redirect('user/peng_expl_nonit', 'refresh');
 				} else {
+
+					$data['peng_expl_nonit'] = $this->db->get_where('peng_expl_non_it', ['id' => $id])->row_array();
+
+					$upload = $_FILES['filea']['name'];
+
+					if ($upload) {
+						$config['allowed_types'] = 'pdf';
+						$config['max_size'] = '5120';
+						$config['upload_path'] = './assets/files/documents/';
+
+						$this->load->library('upload', $config);
+
+						if ($this->upload->do_upload('files')) {
+
+							$old_image = $data['peng_expl_nonit']['files'];
+							if ($old_image != 'default.pdf') {
+								unlink(FCPATH . 'assets/files/documents/' . $old_image);
+							}
+
+							$newimg = $this->upload->data('file_name');
+
+							$this->db->set('files', $newimg);
+						} else {
+							echo $this->upload->display_errors();
+						}
+						$this->db->where('id', $id);
+						$this->db->update('peng_expl_non_it');
+					}
+
 					foreach ($no_fiat as $key => $no_fiat) {
 						$data_fiat = array(
 							'id' => uniqid(),
@@ -1457,55 +1469,6 @@ class User extends CI_Controller
 		);
 
 		$this->load->view('user/excel_monitoring_expl', $data);
-	}
-
-	public function upload_pdf($id = "")
-	{
-		$data['title'] = "Upload File PDF";
-
-		$data['pengadaan'] = $this->db->get_where('pengadaan', ['id' => $id])->row_array();
-
-		$data['user'] = $this->db->get_where('user', ['user_pn' => $this->session->userdata('user_pn')])->row_array();
-
-		$this->form_validation->set_rules('id', 'ID', 'required');
-
-
-		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/sidebar', $data);
-			$this->load->view('templates/topbar', $data);
-			$this->load->view('user/upload', $data);
-			$this->load->view('templates/footer');
-		} else {
-			$upload = $_FILES['files']['name'];
-
-			if ($upload) {
-				$config['allowed_types'] = 'pdf';
-				$config['max_size'] = '5120';
-				$config['upload_path'] = './assets/files/documents/';
-
-				$this->load->library('upload', $config);
-
-				if ($this->upload->do_upload('files')) {
-
-					$old_image = $data['pengadaan']['files'];
-					if ($old_image != 'default.pdf') {
-						unlink(FCPATH . 'assets/files/documents/' . $old_image);
-					}
-
-					$newimg = $this->upload->data('file_name');
-
-					$this->db->set('files', $newimg);
-				} else {
-					echo $this->upload->display_errors();
-				}
-			}
-			$this->db->where('id', $id);
-			$this->db->update('pengadaan');
-
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Upload data success!</div>');
-			redirect('pengadaan', 'refresh');
-		}
 	}
 }
 
